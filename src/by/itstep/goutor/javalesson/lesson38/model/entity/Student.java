@@ -1,9 +1,12 @@
 package by.itstep.goutor.javalesson.lesson38.model.entity;
 
 import java.lang.*;
+import java.util.Comparator;
 import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 
-public class Student {
+public class Student extends Object implements Comparable<Student> {
     private String name;
     private int age;
     private int mark;
@@ -62,11 +65,36 @@ public class Student {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", mark=" + mark +
-                '}'  ;
+                '}';
     }
 
     public static void main(String[] args) {
-        Student student = new Student("Alex", 12, 2);
-        System.out.println(student);
+        Set<Student> set = new TreeSet<>();
+        set.add(new Student("Alex", 12, 2));
+
+//        Set<Integer> set = new TreeSet<>();
+//        set.add(5);
+//        set.add(67);
+//        set.add(12);
+//        set.add(7);
+//        set.add(89);
+//        set.add(111);
+//        set.add(3);
+//        set.add(5);
+//        set.add(67);
+//
+//        System.out.println(set);
+
+
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        if(mark >o.mark){
+            return 1;
+        }else if(mark< o.mark){
+            return -1;
+        }
+        return 0;
     }
 }
